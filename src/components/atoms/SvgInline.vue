@@ -6,7 +6,7 @@
 <script>
 
 const context = require.context('@/assets/svg/.?vue-template', true,
-  /\.svg$/, 'lazy');
+  /\.svg$/, 'eager');
 
 const svgs = context.keys().reduce((result, key) => {
   const name = key.replace(/^\.\//, '');

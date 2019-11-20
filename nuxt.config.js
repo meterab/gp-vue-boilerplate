@@ -2,6 +2,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const shrinkRay = require('shrink-ray-current');
 const isDev = process.env.NODE_ENV === 'development';
 
 const DEFAULT_LANG = 'de';
@@ -122,7 +123,8 @@ module.exports = {
 
   render: {
     resourceHints: true,
-    http2: { push: true }
+    http2: { push: true },
+    compressor: shrinkRay()
   },
 
   router: {
@@ -143,7 +145,7 @@ module.exports = {
   plugins: [],
 
   modules: [
-    '@/modules/virtual',
+    // '@/modules/virtual',
     //'@/modules/codesandbox',
     '@/modules/fix/image',
     '@/modules/svg',

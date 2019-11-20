@@ -1,10 +1,10 @@
 
 import {
-  hydrateWhenIdle,
+  // hydrateWhenIdle,
   hydrateWhenVisible
 } from 'vue-lazy-hydration';
 
-export function getAsyncComponents (componentsData, initialVisibleComponents = 1) {
+export function getAsyncComponents (componentsData, initialVisibleComponents = 2) {
   return componentsData.map((item, index) => {
     let asyncLoad = () => import(`@/components/organisms/${item.component}`);
     item.data.options = item.data.options || {};
@@ -21,7 +21,7 @@ export function getAsyncComponents (componentsData, initialVisibleComponents = 1
       visible: true
     });
     return {
-      asyncComponent: hydrateWhenIdle(asyncLoad),
+      asyncComponent: () => import(/* webpackMode: "eager" */`@/components/organisms/${item.component}`),
       data: item.data
     };
   });

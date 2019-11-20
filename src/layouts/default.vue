@@ -29,15 +29,15 @@ import { directionDetectionObserver } from '@/service/viewport';
 
 import {
   hydrateWhenVisible,
-  hydrateOnInteraction,
-  hydrateWhenIdle
+  hydrateOnInteraction
+  // hydrateWhenIdle
 } from 'vue-lazy-hydration';
 
 export default {
 
   components: {
-    gpPageHeader: hydrateWhenIdle(() => import('@/components/page/Header')),
-    gpPageMenuButton: hydrateWhenIdle(() => import('@/components/page/MenuButton')),
+    gpPageHeader: () => import(/* webpackMode: "eager" */'@/components/page/Header'),
+    gpPageMenuButton: () => import(/* webpackMode: "eager" */'@/components/page/MenuButton'),
     gpPageMenu: hydrateOnInteraction(() => import('@/components/page/Menu'), {
       event: 'hydrate'
     }),
