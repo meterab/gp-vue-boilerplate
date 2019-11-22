@@ -145,7 +145,7 @@ module.exports = {
   plugins: [],
 
   modules: [
-    // '@/modules/virtual',
+    '@/modules/virtual',
     //'@/modules/codesandbox',
     '@/modules/fix/image',
     '@/modules/svg',
